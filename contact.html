@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carter Hapner - Home</title>
+  <title>Contact - Carter Hapner</title>
   <style>
-    /* ====== Common Styles ====== */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -13,19 +12,11 @@
       color: #fff;
       overflow-x: hidden;
     }
-    a {
-      color: #1abc9c;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    a:hover {
-      color: #16a085;
-    }
     header {
       position: fixed;
       width: 100%;
       top: 0;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0,0,0,0.8);
       z-index: 1000;
       padding: 10px 0;
     }
@@ -39,45 +30,31 @@
     }
     header nav ul li a {
       color: #1abc9c;
+      text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s;
+    }
+    header nav ul li a:hover {
+      color: #16a085;
     }
     .content {
-      padding-top: 70px; /* account for fixed header */
+      padding: 90px 20px 50px;
+      max-width: 600px;
+      margin: auto;
       text-align: center;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    /* ====== Home Page Specific ====== */
-    .logo {
-      font-size: 4em;
-      font-weight: bold;
-      /* Gradient text effect */
-      background: linear-gradient(45deg, #1abc9c, #16a085);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeIn 2s ease-in-out;
-    }
-    .subtitle {
-      font-size: 1.5em;
-      margin-top: 10px;
-      animation: fadeIn 3s ease-in-out;
     }
     .button {
       display: inline-block;
       padding: 10px 20px;
       background: #1abc9c;
       border-radius: 5px;
-      margin: 20px 10px;
+      margin-top: 20px;
       transition: background 0.3s;
+      text-decoration: none;
+      color: #fff;
     }
     .button:hover {
       background: #16a085;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
     }
     /* ====== Particle Effect ====== */
     .particle {
@@ -102,28 +79,23 @@
   <header>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="hacking.html">Hacking &amp; Cybersecurity</a></li>
-        <li><a href="gaming.html">Gaming</a></li>
-        <li><a href="contact.html">Contact</a></li>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="about.html">About Me</a></li>
+         <li><a href="hacking.html">Hacking &amp; Cybersecurity</a></li>
+         <li><a href="gaming.html">Gaming</a></li>
+         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
   
   <div class="content">
-    <div class="logo">Carter Hapner</div>
-    <div class="subtitle">Ethical Hacking Enthusiast &amp; Competitive Gamer</div>
-    <div style="margin-top: 40px;">
-      <a href="about.html" class="button">About Me</a>
-      <a href="hacking.html" class="button">Hacking Journey</a>
-      <a href="gaming.html" class="button">Gaming Catalog</a>
-      <a href="contact.html" class="button">Contact</a>
-    </div>
+    <h1>Contact Me</h1>
+    <p>Feel free to add me on Discord!</p>
+    <a class="button" href="https://discord.com/users/797927274364141599" target="_blank">Add me on Discord</a>
   </div>
   
   <script>
-    // --- Particle effect function (triggered on click and mousemove) ---
+    // Particle effect
     function createParticles(x, y) {
       const particleCount = 5;
       for (let i = 0; i < particleCount; i++) {

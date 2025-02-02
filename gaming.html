@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carter Hapner - Home</title>
+  <title>Gaming - Carter Hapner</title>
   <style>
-    /* ====== Common Styles ====== */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -13,19 +12,11 @@
       color: #fff;
       overflow-x: hidden;
     }
-    a {
-      color: #1abc9c;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    a:hover {
-      color: #16a085;
-    }
     header {
       position: fixed;
       width: 100%;
       top: 0;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0,0,0,0.8);
       z-index: 1000;
       padding: 10px 0;
     }
@@ -39,41 +30,39 @@
     }
     header nav ul li a {
       color: #1abc9c;
+      text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s;
+    }
+    header nav ul li a:hover {
+      color: #16a085;
     }
     .content {
-      padding-top: 70px; /* account for fixed header */
+      padding: 90px 20px 50px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1, h2 {
       text-align: center;
-      height: 100vh;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    .game-catalog {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .game-list {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 20px;
       justify-content: center;
     }
-    /* ====== Home Page Specific ====== */
-    .logo {
-      font-size: 4em;
-      font-weight: bold;
-      /* Gradient text effect */
-      background: linear-gradient(45deg, #1abc9c, #16a085);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeIn 2s ease-in-out;
+    .game-list img {
+      width: 200px;
+      border-radius: 10px;
+      transition: transform 0.3s;
     }
-    .subtitle {
-      font-size: 1.5em;
-      margin-top: 10px;
-      animation: fadeIn 3s ease-in-out;
-    }
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #1abc9c;
-      border-radius: 5px;
-      margin: 20px 10px;
-      transition: background 0.3s;
-    }
-    .button:hover {
-      background: #16a085;
+    .game-list img:hover {
+      transform: scale(1.1);
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -102,28 +91,33 @@
   <header>
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Me</a></li>
-        <li><a href="hacking.html">Hacking &amp; Cybersecurity</a></li>
-        <li><a href="gaming.html">Gaming</a></li>
-        <li><a href="contact.html">Contact</a></li>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="about.html">About Me</a></li>
+         <li><a href="hacking.html">Hacking &amp; Cybersecurity</a></li>
+         <li><a href="gaming.html">Gaming</a></li>
+         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
   
   <div class="content">
-    <div class="logo">Carter Hapner</div>
-    <div class="subtitle">Ethical Hacking Enthusiast &amp; Competitive Gamer</div>
-    <div style="margin-top: 40px;">
-      <a href="about.html" class="button">About Me</a>
-      <a href="hacking.html" class="button">Hacking Journey</a>
-      <a href="gaming.html" class="button">Gaming Catalog</a>
-      <a href="contact.html" class="button">Contact</a>
+    <h1>Gaming Catalog</h1>
+    <h2>These are the games I like to play right now!</h2>
+    <div class="game-catalog">
+      <div class="game-list">
+        <img src="Images/Overwatch.jpg" alt="Overwatch">
+        <img src="Images/RL.jpg" alt="Rocket League">
+        <img src="Images/Valorant.jpg" alt="Valorant">
+        <img src="Images/CS2.png" alt="Counter-Strike 2">
+        <img src="Images/Kovaaks.jpg" alt="Kovaaks Aim Trainer">
+        <img src="Images/KTANE.jpg" alt="Keep Talking and Nobody Explodes">
+        <img src="Images/Outlast Trials.jpg" alt="Outlast Trials">
+      </div>
     </div>
   </div>
   
   <script>
-    // --- Particle effect function (triggered on click and mousemove) ---
+    // Particle effect
     function createParticles(x, y) {
       const particleCount = 5;
       for (let i = 0; i < particleCount; i++) {
