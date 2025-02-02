@@ -4,82 +4,122 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carter Hapner - Home</title>
+  <!-- Import Montserrat from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ====== Common Styles ====== */
+    /* Global Styles */
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Montserrat', sans-serif;
       background: #0d0d0d;
       color: #fff;
       overflow-x: hidden;
+      position: relative;
     }
-    a {
-      color: #1abc9c;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    a:hover {
-      color: #16a085;
-    }
+    a { text-decoration: none; }
+    
+    /* Header */
     header {
       position: fixed;
-      width: 100%;
       top: 0;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 1000;
-      padding: 10px 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1100;
+      padding: 20px 0;
+      font-size: 1.2em;
     }
     header nav ul {
       list-style: none;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
       margin: 0;
       padding: 0;
     }
     header nav ul li a {
-      color: #1abc9c;
-      font-weight: bold;
+      color: #e74c3c; /* red */
+      font-weight: 600;
     }
+    header nav ul li a:hover {
+      color: #c0392b;
+    }
+    
+    /* Animated Backdrop using Hapdaddy Logo */
+    .backdrop {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('Images/Hapdaddy Logo.JPG') no-repeat center center;
+      background-size: cover;
+      opacity: 0;
+      animation: backdropFade 3s forwards;
+      z-index: -2;
+    }
+    .backdrop::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(231,76,60,0.7), rgba(192,57,43,0.7));
+    }
+    @keyframes backdropFade {
+      from { opacity: 0; transform: scale(1.2); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    /* Content */
     .content {
-      padding-top: 70px; /* account for fixed header */
-      text-align: center;
+      padding-top: 120px; /* extra space for header */
       height: 100vh;
+      text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      position: relative;
+      z-index: 1;
     }
-    /* ====== Home Page Specific ====== */
     .logo {
-      font-size: 4em;
-      font-weight: bold;
-      /* Gradient text effect */
-      background: linear-gradient(45deg, #1abc9c, #16a085);
+      font-size: 4.5em;
+      font-weight: 700;
+      color: #e74c3c; /* red */
+      background: linear-gradient(45deg, #e74c3c, #c0392b);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: fadeIn 2s ease-in-out;
     }
     .subtitle {
-      font-size: 1.5em;
+      font-size: 1.8em;
       margin-top: 10px;
-      animation: fadeIn 3s ease-in-out;
+      color: #e74c3c;
+      animation: fadeIn 2.5s ease-in-out;
+    }
+    .button-container {
+      margin-top: 40px;
     }
     .button {
       display: inline-block;
-      padding: 10px 20px;
-      background: #1abc9c;
-      border-radius: 5px;
-      margin: 20px 10px;
-      transition: background 0.3s;
+      padding: 15px 25px;
+      margin: 10px;
+      background: #e74c3c;
+      border: 2px solid #c0392b;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.3s;
     }
     .button:hover {
-      background: #16a085;
+      background: #c0392b;
+      transform: scale(1.05);
     }
+    
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* ====== Particle Effect ====== */
+    
+    /* Particle Effect (for click & mousemove) */
     .particle {
       position: absolute;
       background: #fff;
@@ -91,14 +131,14 @@
       animation: particleAnim 1s forwards;
     }
     @keyframes particleAnim {
-      to {
-        opacity: 0;
-        transform: translateY(-50px) scale(0.5);
-      }
+      to { opacity: 0; transform: translateY(-50px) scale(0.5); }
     }
   </style>
 </head>
 <body>
+  <!-- Backdrop with Hapdaddy Logo -->
+  <div class="backdrop"></div>
+  
   <header>
     <nav>
       <ul>
@@ -114,7 +154,7 @@
   <div class="content">
     <div class="logo">Carter Hapner</div>
     <div class="subtitle">Ethical Hacking Enthusiast &amp; Competitive Gamer</div>
-    <div style="margin-top: 40px;">
+    <div class="button-container">
       <a href="about.html" class="button">About Me</a>
       <a href="hacking.html" class="button">Hacking Journey</a>
       <a href="gaming.html" class="button">Gaming Catalog</a>
@@ -123,7 +163,7 @@
   </div>
   
   <script>
-    // --- Particle effect function (triggered on click and mousemove) ---
+    // Particle effect: triggers on click and mousemove
     function createParticles(x, y) {
       const particleCount = 5;
       for (let i = 0; i < particleCount; i++) {
@@ -137,16 +177,12 @@
         const translateY = Math.sin(angle) * distance;
         particle.style.transform = `translate(${translateX}px, ${translateY}px)`;
         document.body.appendChild(particle);
-        particle.addEventListener("animationend", function () {
-          particle.remove();
-        });
+        particle.addEventListener("animationend", () => particle.remove());
       }
     }
-    document.addEventListener("click", function(e) {
-      createParticles(e.clientX, e.clientY);
-    });
+    document.addEventListener("click", e => createParticles(e.clientX, e.clientY));
     let lastMouseMove = 0;
-    document.addEventListener("mousemove", function(e) {
+    document.addEventListener("mousemove", e => {
       const now = Date.now();
       if (now - lastMouseMove > 50) {
         createParticles(e.clientX, e.clientY);

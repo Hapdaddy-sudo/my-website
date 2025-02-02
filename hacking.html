@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hacking &amp; Cybersecurity - Carter Hapner</title>
+  <!-- Import Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #121212;
+      color: #fff;
+      overflow-x: hidden;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1100;
+      padding: 20px 0;
+      font-size: 1.2em;
+    }
+    header nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+    header nav ul li a {
+      color: #e74c3c;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    header nav ul li a:hover { color: #c0392b; }
+    
+    .content {
+      padding: 120px 20px 50px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1, h2, h3 {
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    .achievement-wall {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .achievement {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .achievement:hover { transform: scale(1.05); }
+    .achievement img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    /* Particle Effect */
+    .particle {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      pointer-events: none;
+      width: 6px;
+      height: 6px;
+      opacity: 1;
+      animation: particleAnim 1s forwards;
+    }
+    @keyframes particleAnim {
+      to { opacity: 0; transform: translateY(-50px) scale(0.5); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+         <li><a href="index.html">Home</a></li>
+         <li><a href="about.html">About Me</a></li>
+         <li><a href="hacking.html">Hacking &amp; Cybersecurity</a></li>
+         <li><a href="gaming.html">Gaming</a></li>
+         <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="content">
+    <h1>Hacking &amp; Cybersecurity Progress</h1>
+    <h2>Wall of Achievements</h2>
+    <div class="achievement-wall">
+      <!-- Chapter 1: Venus -->
+      <div class="achievement">
+        <img src="Images/hackmyvmlogo.png" alt="HackMyVM Logo" style="background: #fff; padding: 10px; border-radius: 5px;">
+        <h3>Chapter 1: Venus</h3>
+        <img src="Images/venushackmyvm.jpg" alt="Venus Machine" style="margin-top:10px; border-radius:5px;">
+        <p>Completed on HackMyVM.com</p>
+      </div>
+      <!-- Placeholder for upcoming chapters -->
+      <div class="achievement">
+        <img src="Images/hackmyvmlogo.png" alt="HackMyVM Logo" style="background: #fff; padding: 10px; border-radius: 5px;">
+        <h3>Upcoming Chapters</h3>
+        <p>Currently completing the remaining chapters...</p>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Particle effect
+    function createParticles(x, y) {
+      const particleCount = 5;
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+        particle.style.left = x + "px";
+        particle.style.top = y + "px";
+        const angle = Math.random() * 2 * Math.PI;
+        const distance = Math.random() * 50;
+        const translateX = Math.cos(angle) * distance;
+        const translateY = Math.sin(angle) * distance;
+        particle.style.transform = `translate(${translateX}px, ${translateY}px)`;
+        document.body.appendChild(particle);
+        particle.addEventListener("animationend", () => particle.remove());
+      }
+    }
+    document.addEventListener("click", e => createParticles(e.clientX, e.clientY));
+    let lastMouseMove = 0;
+    document.addEventListener("mousemove", e => {
+      const now = Date.now();
+      if (now - lastMouseMove > 50) {
+        createParticles(e.clientX, e.clientY);
+        lastMouseMove = now;
+      }
+    });
+  </script>
+</body>
+</html>

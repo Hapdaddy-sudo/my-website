@@ -4,41 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gaming - Carter Hapner</title>
+  <!-- Import Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0d0d0d;
+      font-family: 'Montserrat', sans-serif;
+      background: #121212;
       color: #fff;
       overflow-x: hidden;
     }
     header {
       position: fixed;
-      width: 100%;
       top: 0;
-      background: rgba(0,0,0,0.8);
-      z-index: 1000;
-      padding: 10px 0;
+      width: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1100;
+      padding: 20px 0;
+      font-size: 1.2em;
     }
     header nav ul {
       list-style: none;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
       margin: 0;
       padding: 0;
     }
     header nav ul li a {
-      color: #1abc9c;
-      text-decoration: none;
-      font-weight: bold;
+      color: #e74c3c;
+      font-weight: 600;
       transition: color 0.3s;
     }
-    header nav ul li a:hover {
-      color: #16a085;
-    }
+    header nav ul li a:hover { color: #c0392b; }
+    
     .content {
-      padding: 90px 20px 50px;
+      padding: 120px 20px 50px;
       max-width: 1000px;
       margin: auto;
     }
@@ -48,27 +49,34 @@
     }
     .game-catalog {
       margin-top: 40px;
-      text-align: center;
     }
-    .game-list {
+    .game-item {
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
+      align-items: center;
+      margin: 40px 0;
+      opacity: 0;
+      transform: translateX(-50px);
+      animation: slideIn 1s forwards;
     }
-    .game-list img {
+    .game-item:nth-child(even) { flex-direction: row-reverse; transform: translateX(50px); }
+    .game-item img {
       width: 200px;
       border-radius: 10px;
-      transition: transform 0.3s;
+      margin: 0 20px;
     }
-    .game-list img:hover {
-      transform: scale(1.1);
+    .game-item .game-title {
+      font-size: 1.5em;
+      font-weight: 600;
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    /* ====== Particle Effect ====== */
+    @keyframes slideIn {
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    /* Particle Effect */
     .particle {
       position: absolute;
       background: #fff;
@@ -80,10 +88,7 @@
       animation: particleAnim 1s forwards;
     }
     @keyframes particleAnim {
-      to {
-        opacity: 0;
-        transform: translateY(-50px) scale(0.5);
-      }
+      to { opacity: 0; transform: translateY(-50px) scale(0.5); }
     }
   </style>
 </head>
@@ -104,14 +109,34 @@
     <h1>Gaming Catalog</h1>
     <h2>These are the games I like to play right now!</h2>
     <div class="game-catalog">
-      <div class="game-list">
+      <!-- Each game item animates in -->
+      <div class="game-item" style="animation-delay: 0.2s;">
         <img src="Images/Overwatch.jpg" alt="Overwatch">
+        <div class="game-title">Overwatch</div>
+      </div>
+      <div class="game-item" style="animation-delay: 0.4s;">
         <img src="Images/RL.jpg" alt="Rocket League">
+        <div class="game-title">Rocket League</div>
+      </div>
+      <div class="game-item" style="animation-delay: 0.6s;">
         <img src="Images/Valorant.jpg" alt="Valorant">
+        <div class="game-title">Valorant</div>
+      </div>
+      <div class="game-item" style="animation-delay: 0.8s;">
         <img src="Images/CS2.png" alt="Counter-Strike 2">
+        <div class="game-title">Counter-Strike 2</div>
+      </div>
+      <div class="game-item" style="animation-delay: 1s;">
         <img src="Images/Kovaaks.jpg" alt="Kovaaks Aim Trainer">
+        <div class="game-title">Kovaaks Aim Trainer</div>
+      </div>
+      <div class="game-item" style="animation-delay: 1.2s;">
         <img src="Images/KTANE.jpg" alt="Keep Talking and Nobody Explodes">
+        <div class="game-title">KTANE</div>
+      </div>
+      <div class="game-item" style="animation-delay: 1.4s;">
         <img src="Images/Outlast Trials.jpg" alt="Outlast Trials">
+        <div class="game-title">Outlast Trials</div>
       </div>
     </div>
   </div>
@@ -131,16 +156,12 @@
         const translateY = Math.sin(angle) * distance;
         particle.style.transform = `translate(${translateX}px, ${translateY}px)`;
         document.body.appendChild(particle);
-        particle.addEventListener("animationend", function () {
-          particle.remove();
-        });
+        particle.addEventListener("animationend", () => particle.remove());
       }
     }
-    document.addEventListener("click", function(e) {
-      createParticles(e.clientX, e.clientY);
-    });
+    document.addEventListener("click", e => createParticles(e.clientX, e.clientY));
     let lastMouseMove = 0;
-    document.addEventListener("mousemove", function(e) {
+    document.addEventListener("mousemove", e => {
       const now = Date.now();
       if (now - lastMouseMove > 50) {
         createParticles(e.clientX, e.clientY);
