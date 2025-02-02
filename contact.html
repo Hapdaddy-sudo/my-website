@@ -4,9 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact - Carter Hapner</title>
-  <!-- Import Montserrat -->
+  
+  <!-- Import Montserrat from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <style>
+    /* Global Styles */
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
@@ -14,25 +17,28 @@
       background-size: cover;
       color: #fff;
       overflow-x: hidden;
+      position: relative;
     }
-    /* Semi-transparent overlay for better readability */
+    
+    /* Overlay for improved readability */
     .overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.6);
       z-index: -1;
     }
+    
+    /* Header (same as other pages) */
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      z-index: 1100;
+      background: rgba(0,0,0,0.9);
       padding: 20px 0;
-      font-size: 1.2em;
+      z-index: 1000;
     }
     header nav ul {
       list-style: none;
@@ -47,39 +53,104 @@
       font-weight: 600;
       transition: color 0.3s;
     }
-    header nav ul li a:hover { color: #c0392b; }
-    
-    .content {
-      padding: 120px 20px 50px;
-      max-width: 600px;
-      margin: auto;
-      text-align: center;
-      background: rgba(0,0,0,0.75);
-      border-radius: 10px;
+    header nav ul li a:hover {
+      color: #c0392b;
     }
-    h1 {
+    
+    /* Contact Container */
+    .contact-container {
+      max-width: 800px;
+      margin: 150px auto 50px;
+      padding: 40px;
+      background: rgba(0,0,0,0.8);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .contact-container h1 {
+      font-size: 3em;
       margin-bottom: 20px;
       animation: fadeIn 1.5s ease-in-out;
     }
-    p { animation: fadeIn 1.5s ease-in-out; }
-    .button {
-      display: inline-block;
-      padding: 15px 25px;
-      margin-top: 20px;
+    .contact-container p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+    
+    /* Contact Form Styles */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      animation: fadeIn 2.5s ease-in-out;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+    .contact-form input {
+      height: 50px;
+    }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+    .contact-form button {
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
       background: #e74c3c;
-      border: 2px solid #c0392b;
-      border-radius: 8px;
       color: #fff;
+      font-size: 1.2em;
       font-weight: 600;
+      cursor: pointer;
       transition: background 0.3s, transform 0.3s;
     }
-    .button:hover {
+    .contact-form button:hover {
       background: #c0392b;
       transform: scale(1.05);
     }
+    
+    /* Social Icons Section */
+    .social-icons {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      animation: fadeIn 2.8s ease-in-out;
+    }
+    .social-icons a {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      background: #e74c3c;
+      border-radius: 50%;
+      line-height: 50px;
+      text-align: center;
+      color: #fff;
+      font-size: 1.5em;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .social-icons a:hover {
+      background: #c0392b;
+      transform: scale(1.1);
+    }
+    
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     /* Particle Effect */
@@ -94,12 +165,14 @@
       animation: particleAnim 1s forwards;
     }
     @keyframes particleAnim {
-      to { opacity: 0; transform: translateY(-50px) scale(0.5); }
+      to {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.5);
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Overlay for better contrast -->
   <div class="overlay"></div>
   
   <header>
@@ -114,14 +187,30 @@
     </nav>
   </header>
   
-  <div class="content">
-    <h1>Contact Me</h1>
-    <p>Feel free to add me on Discord!</p>
-    <a class="button" href="https://discord.com/users/797927274364141599" target="_blank">Add me on Discord</a>
+  <div class="contact-container">
+    <h1>Get in Touch</h1>
+    <p>I'd love to hear from you. Whether you have a project idea, collaboration in mind, or just want to say hello, drop me a message below or connect via social media.</p>
+    
+    <!-- Contact Form -->
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="_replyto" placeholder="Your Email" required />
+      <textarea name="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+    
+    <!-- Social Icons Section -->
+    <div class="social-icons">
+      <!-- Replace the text or use SVG icons / icon fonts as desired -->
+      <a href="https://discord.com/users/797927274364141599" target="_blank" title="Discord">D</a>
+      <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" title="GitHub">G</a>
+      <a href="https://twitter.com/YOUR_TWITTER_HANDLE" target="_blank" title="Twitter">T</a>
+      <a href="https://linkedin.com/in/YOUR_LINKEDIN_PROFILE" target="_blank" title="LinkedIn">L</a>
+    </div>
   </div>
   
   <script>
-    // Particle effect
+    // Particle effect: triggers on click and mousemove
     function createParticles(x, y) {
       const particleCount = 5;
       for (let i = 0; i < particleCount; i++) {
@@ -138,9 +227,9 @@
         particle.addEventListener("animationend", () => particle.remove());
       }
     }
-    document.addEventListener("click", e => createParticles(e.clientX, e.clientY));
+    document.addEventListener("click", (e) => createParticles(e.clientX, e.clientY));
     let lastMouseMove = 0;
-    document.addEventListener("mousemove", e => {
+    document.addEventListener("mousemove", (e) => {
       const now = Date.now();
       if (now - lastMouseMove > 50) {
         createParticles(e.clientX, e.clientY);
