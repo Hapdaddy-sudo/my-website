@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Carter Hapner - Home</title>
   <!-- Import Montserrat from Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -11,22 +11,28 @@
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
-      background: #0d0d0d;
+      /* Keep the black background but lighten it just a bit for better contrast */
+      background: #111; 
       color: #fff;
+      /* Keep horizontal overflow hidden to avoid accidental scrollbars */
       overflow-x: hidden;
+      /* Remove explicit position: relative unless you need it for special layering */
       position: relative;
     }
-    a { text-decoration: none; }
-    
+
+    a { 
+      text-decoration: none; 
+    }
+
     /* Header */
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.9);
+      /* Slightly increase opacity to 0.95 for better reading */
+      background: rgba(0, 0, 0, 0.95);
       z-index: 1100;
-      padding: 20px 0;
-      font-size: 1.2em;
+      padding: 15px 0;
     }
     header nav ul {
       list-style: none;
@@ -36,18 +42,21 @@
       margin: 0;
       padding: 0;
     }
+    /* Use white for nav links; accent color on hover for clarity */
     header nav ul li a {
-      color: #e74c3c; /* red */
+      color: #fff; 
       font-weight: 600;
+      transition: color 0.3s;
     }
     header nav ul li a:hover {
-      color: #c0392b;
+      color: #e74c3c; /* red accent on hover */
     }
-    
+
     /* Animated Backdrop using Hapdaddy Logo */
     .backdrop {
       position: fixed;
-      top: 0; left: 0;
+      top: 0; 
+      left: 0;
       width: 100%;
       height: 100%;
       background: url('Images/Hapdaddy Logo.JPG') no-repeat center center;
@@ -56,51 +65,61 @@
       animation: backdropFade 3s forwards;
       z-index: -2;
     }
-    /* NOTE: Removed the ::after red gradient overlay for clarity */
-    /*
-    .backdrop::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, rgba(231,76,60,0.7), rgba(192,57,43,0.7));
-    }
-    */
     @keyframes backdropFade {
-      from { opacity: 0; transform: scale(1.2); }
-      to { opacity: 1; transform: scale(1); }
+      from {
+        opacity: 0;
+        transform: scale(1.2);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
-    
+
     /* Content */
+    /* 
+       Switch from height: 100vh to min-height: calc(100vh - <header-height>)
+       so there's no forced overflow. Also add top-padding to ensure 
+       content doesn't hide behind the fixed header.
+    */
     .content {
-      padding-top: 120px; /* extra space for header */
-      height: 100vh;
+      min-height: calc(100vh - 60px); /* 60px for header padding & height */
+      padding-top: 120px; /* enough space below header if you prefer a "hero" gap */
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center; /* ensure items are centered horizontally */
       position: relative;
       z-index: 1;
+      box-sizing: border-box;
     }
+
+    /* Logo text: Keep the bold gradient red. */
     .logo {
-      font-size: 4.5em;
+      font-size: 4em; /* slightly smaller so it fits well on mobile */
       font-weight: 700;
-      color: #e74c3c; /* red */
       background: linear-gradient(45deg, #e74c3c, #c0392b);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: fadeIn 2s ease-in-out;
+      margin: 0; /* Remove default margins for more controlled spacing */
     }
+
+    /* Subtitle: make it lighter for better text contrast with the background */
     .subtitle {
-      font-size: 1.8em;
+      font-size: 1.5em;
       margin-top: 10px;
-      color: #e74c3c;
+      color: #ccc; 
       animation: fadeIn 2.5s ease-in-out;
+      margin-bottom: 30px; /* add spacing below */
     }
+
     .button-container {
-      margin-top: 40px;
+      margin-top: 20px;
     }
+
+    /* Buttons: keep the accent color, unify the styling for clarity */
     .button {
       display: inline-block;
       padding: 15px 25px;
@@ -116,12 +135,19 @@
       background: #c0392b;
       transform: scale(1.05);
     }
-    
+
+    /* Fade-in animation for text elements */
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    
+
     /* Particle Effect (for click & mousemove) */
     .particle {
       position: absolute;
@@ -134,14 +160,17 @@
       animation: particleAnim 1s forwards;
     }
     @keyframes particleAnim {
-      to { opacity: 0; transform: translateY(-50px) scale(0.5); }
+      to {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.5);
+      }
     }
   </style>
 </head>
 <body>
   <!-- Backdrop with Hapdaddy Logo -->
   <div class="backdrop"></div>
-  
+
   <header>
     <nav>
       <ul>
@@ -153,10 +182,10 @@
       </ul>
     </nav>
   </header>
-  
+
   <div class="content">
-    <div class="logo">Carter Hapner</div>
-    <div class="subtitle">Ethical Hacking Enthusiast &amp; Competitive Gamer</div>
+    <h1 class="logo">Carter Hapner</h1>
+    <p class="subtitle">Ethical Hacking Enthusiast &amp; Competitive Gamer</p>
     <div class="button-container">
       <a href="about.html" class="button">About Me</a>
       <a href="hacking.html" class="button">Hacking Journey</a>
@@ -164,7 +193,7 @@
       <a href="contact.html" class="button">Contact</a>
     </div>
   </div>
-  
+
   <script>
     // Particle effect: triggers on click and mousemove
     function createParticles(x, y) {
@@ -183,9 +212,13 @@
         particle.addEventListener("animationend", () => particle.remove());
       }
     }
-    document.addEventListener("click", e => createParticles(e.clientX, e.clientY));
+
+    document.addEventListener("click", (e) => {
+      createParticles(e.clientX, e.clientY);
+    });
+
     let lastMouseMove = 0;
-    document.addEventListener("mousemove", e => {
+    document.addEventListener("mousemove", (e) => {
       const now = Date.now();
       if (now - lastMouseMove > 50) {
         createParticles(e.clientX, e.clientY);
