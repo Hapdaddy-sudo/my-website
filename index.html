@@ -2,26 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carter Hapner - Home</title>
-  
-  <!-- Import Poppins from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Import Montserrat from Google Fonts for consistency -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   
   <style>
     /* Global Styles */
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #121212; /* A neutral dark background */
+      font-family: 'Montserrat', sans-serif;
+      background: #121212;
       color: #ffffff;
       overflow-x: hidden;
     }
-
     a {
       text-decoration: none;
     }
-
+    
     /* Header */
     header {
       position: fixed;
@@ -29,7 +27,7 @@
       width: 100%;
       background: rgba(0, 0, 0, 0.9);
       z-index: 1100;
-      padding: 15px 0;
+      padding: 20px 0;
     }
     header nav ul {
       list-style: none;
@@ -40,18 +38,18 @@
       padding: 0;
     }
     header nav ul li a {
-      color: #ffffff;
+      color: #e74c3c; /* Red accent */
       font-weight: 600;
       transition: color 0.3s;
     }
     header nav ul li a:hover {
-      color: #1abc9c; /* Teal accent on hover */
+      color: #c0392b;
     }
-
-    /* Content (no animated backdrop anymore) */
+    
+    /* Content Area */
     .content {
-      min-height: calc(100vh - 60px);
-      padding-top: 120px; /* Space below fixed header */
+      min-height: calc(100vh - 80px);
+      padding-top: 120px; /* Account for the fixed header */
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -59,49 +57,46 @@
       align-items: center;
       box-sizing: border-box;
     }
-
-    /* Larger text for the hero content */
+    
+    /* Hero Text */
     .logo {
-      font-size: 5em; /* Increase size significantly */
+      font-size: 5em;
       font-weight: 700;
-      /* Teal gradient for a cooler accent */
-      background: linear-gradient(45deg, #16a085, #1abc9c);
+      background: linear-gradient(45deg, #e74c3c, #c0392b);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       margin: 0;
       animation: fadeIn 1.5s ease-in-out;
     }
-
     .subtitle {
-      font-size: 2em; /* Increased for clarity */
+      font-size: 2em;
       font-weight: 400;
-      color: #cfcfcf; /* Softer contrast color */
+      color: #cfcfcf;
       margin-top: 15px;
       margin-bottom: 35px;
       animation: fadeIn 2s ease-in-out;
     }
-
+    
+    /* Button Styles */
     .button-container {
       margin-top: 20px;
     }
-
-    /* Buttons: unify with teal accent */
     .button {
       display: inline-block;
       padding: 16px 28px;
       margin: 10px;
-      background: #1abc9c;
-      border: 2px solid #16a085;
+      background: #e74c3c;
+      border: 2px solid #c0392b;
       border-radius: 8px;
       color: #ffffff;
       font-weight: 600;
       transition: background 0.3s, transform 0.3s;
     }
     .button:hover {
-      background: #16a085;
+      background: #c0392b;
       transform: scale(1.05);
     }
-
+    
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -112,8 +107,8 @@
         transform: translateY(0);
       }
     }
-
-    /* Particle effect */
+    
+    /* Particle Effect */
     .particle {
       position: absolute;
       background: #ffffff;
@@ -133,8 +128,6 @@
   </style>
 </head>
 <body>
-  <!-- Removed the .backdrop entirely -->
-
   <header>
     <nav>
       <ul>
@@ -159,7 +152,7 @@
   </div>
 
   <script>
-    // Particle effect: triggers on click and mousemove
+    // Particle effect: triggers on both click and mousemove
     function createParticles(x, y) {
       const particleCount = 5;
       for (let i = 0; i < particleCount; i++) {
@@ -167,22 +160,16 @@
         particle.classList.add("particle");
         particle.style.left = x + "px";
         particle.style.top = y + "px";
-
         const angle = Math.random() * 2 * Math.PI;
         const distance = Math.random() * 50;
         const translateX = Math.cos(angle) * distance;
         const translateY = Math.sin(angle) * distance;
         particle.style.transform = `translate(${translateX}px, ${translateY}px)`;
-
         document.body.appendChild(particle);
         particle.addEventListener("animationend", () => particle.remove());
       }
     }
-
-    document.addEventListener("click", (e) => {
-      createParticles(e.clientX, e.clientY);
-    });
-
+    document.addEventListener("click", (e) => createParticles(e.clientX, e.clientY));
     let lastMouseMove = 0;
     document.addEventListener("mousemove", (e) => {
       const now = Date.now();
