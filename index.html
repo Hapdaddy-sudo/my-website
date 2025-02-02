@@ -4,24 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Carter Hapner - Home</title>
-  <!-- Import Montserrat from Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Import Poppins from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
   <style>
     /* Global Styles */
     body {
       margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      /* Keep the black background but lighten it just a bit for better contrast */
-      background: #111; 
-      color: #fff;
-      /* Keep horizontal overflow hidden to avoid accidental scrollbars */
+      font-family: 'Poppins', sans-serif;
+      background: #121212; /* A neutral dark background */
+      color: #ffffff;
       overflow-x: hidden;
-      /* Remove explicit position: relative unless you need it for special layering */
-      position: relative;
     }
 
-    a { 
-      text-decoration: none; 
+    a {
+      text-decoration: none;
     }
 
     /* Header */
@@ -29,8 +27,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      /* Slightly increase opacity to 0.95 for better reading */
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 0, 0.9);
       z-index: 1100;
       padding: 15px 0;
     }
@@ -42,105 +39,73 @@
       margin: 0;
       padding: 0;
     }
-    /* Use white for nav links; accent color on hover for clarity */
     header nav ul li a {
-      color: #fff; 
+      color: #ffffff;
       font-weight: 600;
       transition: color 0.3s;
     }
     header nav ul li a:hover {
-      color: #e74c3c; /* red accent on hover */
+      color: #1abc9c; /* Teal accent on hover */
     }
 
-    /* Animated Backdrop using Hapdaddy Logo */
-    .backdrop {
-      position: fixed;
-      top: 0; 
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('Images/Hapdaddy Logo.JPG') no-repeat center center;
-      background-size: cover;
-      opacity: 0;
-      animation: backdropFade 3s forwards;
-      z-index: -2;
-    }
-    @keyframes backdropFade {
-      from {
-        opacity: 0;
-        transform: scale(1.2);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    /* Content */
-    /* 
-       Switch from height: 100vh to min-height: calc(100vh - <header-height>)
-       so there's no forced overflow. Also add top-padding to ensure 
-       content doesn't hide behind the fixed header.
-    */
+    /* Content (no animated backdrop anymore) */
     .content {
-      min-height: calc(100vh - 60px); /* 60px for header padding & height */
-      padding-top: 120px; /* enough space below header if you prefer a "hero" gap */
+      min-height: calc(100vh - 60px);
+      padding-top: 120px; /* Space below fixed header */
       text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center; /* ensure items are centered horizontally */
-      position: relative;
-      z-index: 1;
+      align-items: center;
       box-sizing: border-box;
     }
 
-    /* Logo text: Keep the bold gradient red. */
+    /* Larger text for the hero content */
     .logo {
-      font-size: 4em; /* slightly smaller so it fits well on mobile */
+      font-size: 5em; /* Increase size significantly */
       font-weight: 700;
-      background: linear-gradient(45deg, #e74c3c, #c0392b);
+      /* Teal gradient for a cooler accent */
+      background: linear-gradient(45deg, #16a085, #1abc9c);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: fadeIn 2s ease-in-out;
-      margin: 0; /* Remove default margins for more controlled spacing */
+      margin: 0;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
-    /* Subtitle: make it lighter for better text contrast with the background */
     .subtitle {
-      font-size: 1.5em;
-      margin-top: 10px;
-      color: #ccc; 
-      animation: fadeIn 2.5s ease-in-out;
-      margin-bottom: 30px; /* add spacing below */
+      font-size: 2em; /* Increased for clarity */
+      font-weight: 400;
+      color: #cfcfcf; /* Softer contrast color */
+      margin-top: 15px;
+      margin-bottom: 35px;
+      animation: fadeIn 2s ease-in-out;
     }
 
     .button-container {
       margin-top: 20px;
     }
 
-    /* Buttons: keep the accent color, unify the styling for clarity */
+    /* Buttons: unify with teal accent */
     .button {
       display: inline-block;
-      padding: 15px 25px;
+      padding: 16px 28px;
       margin: 10px;
-      background: #e74c3c;
-      border: 2px solid #c0392b;
+      background: #1abc9c;
+      border: 2px solid #16a085;
       border-radius: 8px;
-      color: #fff;
+      color: #ffffff;
       font-weight: 600;
       transition: background 0.3s, transform 0.3s;
     }
     .button:hover {
-      background: #c0392b;
+      background: #16a085;
       transform: scale(1.05);
     }
 
-    /* Fade-in animation for text elements */
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(10px);
       }
       to {
         opacity: 1;
@@ -148,10 +113,10 @@
       }
     }
 
-    /* Particle Effect (for click & mousemove) */
+    /* Particle effect */
     .particle {
       position: absolute;
-      background: #fff;
+      background: #ffffff;
       border-radius: 50%;
       pointer-events: none;
       width: 6px;
@@ -168,8 +133,7 @@
   </style>
 </head>
 <body>
-  <!-- Backdrop with Hapdaddy Logo -->
-  <div class="backdrop"></div>
+  <!-- Removed the .backdrop entirely -->
 
   <header>
     <nav>
@@ -203,11 +167,13 @@
         particle.classList.add("particle");
         particle.style.left = x + "px";
         particle.style.top = y + "px";
+
         const angle = Math.random() * 2 * Math.PI;
         const distance = Math.random() * 50;
         const translateX = Math.cos(angle) * distance;
         const translateY = Math.sin(angle) * distance;
         particle.style.transform = `translate(${translateX}px, ${translateY}px)`;
+
         document.body.appendChild(particle);
         particle.addEventListener("animationend", () => particle.remove());
       }
